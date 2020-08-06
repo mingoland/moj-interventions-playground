@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "alpha"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Check your answers before submitting the referral
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Service user details
+      </h2>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Service user name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['service-user-name'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="making-referral-service-user-details">
+              Change <span class="govuk-visually-hidden">service user name</span>
+            </a>
+          </dd> 
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Service user's date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['service-user-dob-day'] }}-{{ data['service-user-dob-month'] }}-{{ data['service-user-dob-year'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="making-referral-service-user-details">
+              Change <span class="govuk-visually-hidden">service user's date of birth'</span>
+            </a>
+          </dd> 
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Service user's phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['service-user-phone-number'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="making-referral-service-user-details">
+              Change <span class="govuk-visually-hidden">service user's phone number</span>
+            </a>
+          </dd> 
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m">
+        Needs and risks
+      </h2>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Needs of the service user
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <ul class="govuk-list govuk-list--bullet">
+              {% for need in data['service-user-needs'] %}
+                <li>{{ need }}</li>
+              {% else %}
+                <li>No needs selected</li>
+              {% endfor %}
+            </ul>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="making-referral-needs-and-risks">
+              Change <span class="govuk-visually-hidden">needs and risks</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <a href="confirmation" role="button" draggable="false" class="govuk-button"  data-module="govuk-button">
+        Submit
+      </a>
+
+      <p>
+        <a href="/">
+          Return to the start of the making referrals process
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+
+{% endblock %}
