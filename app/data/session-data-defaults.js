@@ -20,6 +20,6 @@ Example usage:
 module.exports = {
   users: [
     {id: "GB123456", name: "Alex", phone: "09987654321"},
-    {id: "EN000001", name: "Bob", phone: "07087654321"}
+    {id: "EN000001", name: "Bob", phone: "09987654321"}
   ]
 }
