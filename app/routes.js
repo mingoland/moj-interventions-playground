@@ -7,6 +7,7 @@ router.post('/pp-form-v01/making-referral-needs-and-risks', function(req, res){
 
 })
 */
+/*
 router.get('/pp-form-v01/making-referral-needs-and-risks', function(req, res){
   var users = {
     'GB123456' : 'Alex',
@@ -14,4 +15,5 @@ router.get('/pp-form-v01/making-referral-needs-and-risks', function(req, res){
   }
   res.render(users:users)
 })
+*/
 module.exports = router
