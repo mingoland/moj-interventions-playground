@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  MoJ Interventions - make referrals
+{% endblock %}
+
+{% block beforeContent %}
+
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Service user's information
+      </h1>
+
+      <form action="check-answers" method="post" class="form">
+
+        <!--
+        {% set storedName %}
+          {% for user in data['users'] %}
+            {% if data['service-user-id'] == user["id"] %}
+              {{ user["name"] }}
+            {% endif %}
+          {% endfor %}
+        {% endset %}
+
+        {% set name %}
+          {% if data['service-user-name'] %}
+            {{ data['service-user-name'] }}
+          {% else %}
+            {{ storedName }}
+          {% endif %}
+        {% endset %}
+        -->
+
+        {% set user = (
+          data['users'] | 
+          selectattr('id', data['service-user-id']) | 
+          first
+        ) %}
+
+        {% set name %}
+          {% if data['service-user-name'] %}
+            {{ data['service-user-name'] }}
+          {% else %}
+            {{ user['name'] }}
+          {% endif %}
+        {% endset %}
+
+        {% set phone %}
+          {% if data['service-user-phone'] %}
+            {{ data['service-user-phone'] }}
+          {% else %}
+            {{ user['phone'] }}
+          {% endif %}
+        {% endset %}
+
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--m" for="service-user-name">
+              Name:
+            </label>
+          </h2>
+          <input class="govuk-input" id="service-user-name" name="service-user-name" value="{{ name | trim }}" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--m" for="service-user-phone">
+              Phone number:
+            </label>
+          </h2>
+          <input class="govuk-input" id="service-user-phone" name="service-user-phone" value="{{ phone | trim }}" type="text">
+        </div>
+
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

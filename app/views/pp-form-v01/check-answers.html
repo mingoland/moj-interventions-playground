@@ -29,72 +29,45 @@ Check your answers
       </h2>
       
       <dl class="govuk-summary-list">
+
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Service user name
+            ID
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['service-user-id'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          </dd> 
+        </div>
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['service-user-name'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="making-referral-service-user-details">
-              Change <span class="govuk-visually-hidden">service user name</span>
+            <a class="govuk-link" href="show-user-info">
+              Change <span class="govuk-visually-hidden">service user's name</span>
             </a>
           </dd> 
         </div>
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Service user's date of birth
+            Phone number
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['service-user-dob-day'] }}-{{ data['service-user-dob-month'] }}-{{ data['service-user-dob-year'] }}
+            {{ data['service-user-phone'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="making-referral-service-user-details">
-              Change <span class="govuk-visually-hidden">service user's date of birth'</span>
-            </a>
-          </dd> 
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Service user's phone number
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['service-user-phone-number'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="making-referral-service-user-details">
+            <a class="govuk-link" href="show-user-info">
               Change <span class="govuk-visually-hidden">service user's phone number</span>
             </a>
           </dd> 
-        </div>
-      </dl>
-
-      <h2 class="govuk-heading-m">
-        Needs and risks
-      </h2>
-      
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Needs of the service user
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <ul class="govuk-list govuk-list--bullet">
-              {% for need in data['service-user-needs'] %}
-                <li>{{ need }}</li>
-              {% else %}
-                <li>No needs selected</li>
-              {% endfor %}
-            </ul>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="making-referral-needs-and-risks">
-              Change <span class="govuk-visually-hidden">needs and risks</span>
-            </a>
-          </dd>
         </div>
       </dl>
 
