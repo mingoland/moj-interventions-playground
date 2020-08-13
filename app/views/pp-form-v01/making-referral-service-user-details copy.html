@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  MoJ Interventions - make referrals
+{% endblock %}
+
+{% block beforeContent %}
+
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Service user details
+      </h1>
+
+      <form action="making-referral-needs-and-risks" method="post" class="form">
+
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--m" for="service-user-name">
+              What is the name of the service user?
+            </label>
+          </h2>
+          <input class="govuk-input" id="service-user-name" name="service-user-name" value="{{ data['service-user-name'] }}" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="service-user-dob-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                What is the date of birth of the service user?
+              </h2>
+            </legend>
+            <div id="service-user-dob-hint" class="govuk-hint">
+              For example, 12 11 2007
+            </div>
+            <div class="govuk-date-input" id="service-user-dob">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="service-user-dob-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="service-user-dob-day" name="service-user-dob-day" value="{{ data['service-user-dob-day'] }}" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="service-user-dob-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="service-user-dob-month" name="service-user-dob-month" value="{{ data['service-user-dob-month'] }}" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="service-user-dob-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="service-user-dob-day" name="service-user-dob-year" value="{{ data['service-user-dob-year'] }}" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--m" for="service-user-phone-number">
+              What is the phone number of the service user?
+            </label>
+          </h2>
+          <input class="govuk-input" id="service-user-phone-number" name="service-user-phone-number" value="{{ data['service-user-phone-number'] }}" type="text">
+        </div>
+
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -27,38 +27,25 @@
 
       <form action="making-referral-check-answers" method="post" class="form">
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="service-user-needs-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h2 class="govuk-fieldset__heading">
-                Which of these service user needs does the service user have?
-              </h2>
-            </legend>
-            <span id="service-user-needs-hint" class="govuk-hint">
-              Select all that apply
-            </span>
-            <div class="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="service-user-needs-accomodation" name="service-user-needs" type="checkbox" value="Accomodation" {{ checked("service-user-needs", "Accomodation") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="service-user-needs-heated-seats">
-                  Accomodation
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="service-user-needs-ete" name="service-user-needs" type="checkbox" value="ETE" {{ checked("service-user-needs", "ETE") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="service-user-needs-ete">
-                  ETE
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="service-user-needs-drug-misuse" name="service-user-needs" type="checkbox" value="Drug misuse" {{ checked("service-user-needs", "Drug misuse") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="service-user-needs-drug-misuse">
-                  Drug misuse
-                </label>
-              </div>
-            </div>
-          </fieldset>
+        <div>
+
         </div>
+
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--m" for="service-user-name">
+              Name of the service user:
+            </label>
+          </h2>
+          <!--
+          <p>It is: {{ data['users'][data['service-user-id']]['service-user-name'] }}</p>
+          -->
+          {% for id, userName in users %}
+          <p>It is: {{ userName }}</p>
+          {% endfor %}
+          <input class="govuk-input" id="service-user-name" name="service-user-name" value="" type="text">
+        </div>
+
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>
 
