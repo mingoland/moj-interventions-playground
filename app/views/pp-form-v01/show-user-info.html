@@ -47,25 +47,10 @@
 
         {% set user = (
           data['users'] | 
-          selectattr('id', data['service-user-id']) | 
-          first
+          findMatching('id', data['service-user-id'])
         ) %}
-
-        {% set name %}
-          {% if data['service-user-name'] %}
-            {{ data['service-user-name'] }}
-          {% else %}
-            {{ user['name'] }}
-          {% endif %}
-        {% endset %}
-
-        {% set phone %}
-          {% if data['service-user-phone'] %}
-            {{ data['service-user-phone'] }}
-          {% else %}
-            {{ user['phone'] }}
-          {% endif %}
-        {% endset %}
+        {% set name = (data['service-user-name'] | default(user['name'])) %}
+        {% set phone = (data['service-user-phone'] | default(user['phone'])) %}
 
         <div class="govuk-form-group">
           <h2 class="govuk-label-wrapper">
